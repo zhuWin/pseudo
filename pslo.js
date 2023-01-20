@@ -1,10 +1,11 @@
 var all = "";
 var alll = "";
 var str = ""
+var perline = "";
 var gth="";
 var hashid=""
 var m=n=0;
-var arra=["ä","ā","á","ǎ","à","ă","å","ǻ","ǟ","ǡ","ǻ","ȁ","ȃ","ȧ","ᶏ","ḁ","ẚ","ạ","ả","ấ","ầ","ẩ","ẫ","ậ","ắ","ằ","ẳ","ẵ","ặ","ɑ","α","ά","ὰ","ἀ","ἁ","ἂ","ἃ","ἆ","ἇ","ᾂ","ᾃ","ᾰ","ᾱ","ᾲ","ᾳ","ᾴ","ᾶ","ᾷ","ⱥ","𐓘","𐓙","𐓚"]
+var arra=["ä","ā","á","ǎ","à","ă","å","ǻ","ã","ǟ","ǡ","ǻ","ȁ","ȃ","ȧ","ᶏ","ḁ","ẚ","ạ","ả","ấ","ầ","ẩ","ẫ","ậ","ắ","ằ","ẳ","ẵ","ặ","ɑ","α","ά","ὰ","ἀ","ἁ","ἂ","ἃ","ἆ","ἇ","ᾂ","ᾃ","ᾰ","ᾱ","ᾲ","ᾳ","ᾴ","ᾶ","ᾷ","ⱥ","𐓘","𐓙","𐓚"]
 var arraa=["Ā","Á","Ǎ","À","Â","Ã","Ä","Å","Ǻ","Ά","Ă","Δ","Λ","Д","Ą"]
 var arrb=["b","ь","в","Ъ","Б","б","β","ƀ","ƃ","ɓ","ᵬ","ᶀ","ḃ","ḅ","ḇ","ꞗ"]
 var arrbb=["ß","฿"]
@@ -20,13 +21,13 @@ var arrg=["ḡ","ģ","ǧ","ĝ","ğ","ġ","ǥ","ǵ","ɠ","ᶃ","ꞡ"]
 var arrgg=["Ḡ","Ǵ","Ǧ","Ĝ","Ğ","Ģ","Ġ","Ɠ","Ǥ","Ꞡ"]
 var arrh=["ĥ","ħ","ђ","н"]
 var arrhh=["H","Ĥ","Ħ"]
-var arri=["ı","ī","í","ǐ","ì","ĭ","î","ï","ί","į","ΐ"]
+var arri=["ı","ī","í","ǐ","ì","ĭ","î","ï","ί","į","ΐ","ι"]
 var arrii=["Ī","Í","Ǐ","Ì","Î","Ï","Ĭ","Ί"]
 var arrj=["j"]
 var arrjj=["J","Ĵ"]
 var arrk=["ƙ","κ"]
 var arrkk=["К"]
-var arrl=["ŀ","ļ","ℓ","ĺ","ļ","ľ","ł","ι"]
+var arrl=["ŀ","ļ","ℓ","ĺ","ļ","ľ","ł"]
 var arrll=["Ŀ","£","Ļ","Ł","Ĺ"]
 var arrm=["m","₥","м"]
 var arrmm=["M"]
@@ -66,8 +67,43 @@ function psloca() {
   str = pstype.value;
     for (let i in str) {
         var al = str[i];
+//        if (ignorecontrol.checked) { 猪瘟写的，但是并没用（
+//          if(al=="\\n"){
+//            al="\\n"
+//          }
+//          if(al=="\\r"){
+//            al="\\r"
+//          }
+//          if(al=="\\b"){
+//            al="\\b"
+//          }
+//          if(al=="\\t"){
+//            al="\\t"
+//          }
+//          if(al=="\\f"){
+//            al="\\f"
+//          }
+//          if(al=="\\r"){
+//            al="\\r"
+//          }
+//          if(al=="%s"){
+//            al="%s"
+//          }
+//          if(al=="%2$s"){
+//            al="%2$s"
+//          }
+//          if(al=="%1$s"){
+//            al="%1$s"
+//          }
+//          if(al=="%3$s"){
+//            al="%3$s"
+//          }
+//          if(al=="%4$s"){
+//            al="%4$s"
+//          }
+//        }
         if(al=="a"){
-          al=arra[Math.floor(Math.random()*52)]
+          al=arra[Math.floor(Math.random()*53)]
         }
         if(al=="A"){
           al=arraa[Math.floor(Math.random()*15)]
@@ -115,7 +151,7 @@ function psloca() {
           al=arrhh[Math.floor(Math.random()*3)]
         }
         if(al=="i"){
-          al=arri[Math.floor(Math.random()*10)]
+          al=arri[Math.floor(Math.random()*11)]
         }
         if(al=="I"){
           al=arrii[Math.floor(Math.random()*8)]
@@ -133,7 +169,7 @@ function psloca() {
           al=arrkk[Math.floor(Math.random()*1)]
         }
         if(al=="l"){
-          al=arrl[Math.floor(Math.random()*8)]
+          al=arrl[Math.floor(Math.random()*7)]
         }
         if(al=="L"){
           al=arrll[Math.floor(Math.random()*4)]
@@ -228,7 +264,10 @@ function psloca() {
         all += al; 
         alll = all;
 function bracketfun() {
+  perline = all.substring(0,all.indexOf("\n"))
+//  all = all.substring(all.indexOf("\n")+1,114514)
    while(n<(i/7)){
+//        all.split("")
         n++
         gth=gth+"!"  
         if (n%3==0 && n!=(Math.floor(i/7)+1)) {
@@ -238,6 +277,9 @@ function bracketfun() {
         alll = "["+ all +" " +gth +"]";  
         n=0;
         gth="";
+//        if (all.indexOf("\n")!=-1) {
+//          bracketfun()
+//        }
 }
         if (bracket.checked) {
           bracketfun()
@@ -257,4 +299,8 @@ function bracketfun() {
         }
         psshow.innerHTML = alll;
       }
+}
+function zwdbg() {
+  
+  psshow.innerHTML = "alll " + alll + " perline " + perline
 }
